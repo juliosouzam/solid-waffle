@@ -32,7 +32,7 @@ class CreateTransactionService {
       throw new AppError('Withdrow are not allowed!');
     }
 
-    const { id } = await categoriesRepository.findOneByTitleOrCreate({
+    const categoryCreated = await categoriesRepository.findOneByTitleOrCreate({
       title: category,
     });
 
@@ -40,7 +40,7 @@ class CreateTransactionService {
       title,
       type,
       value,
-      category_id: id,
+      category: categoryCreated,
     });
 
     await transactionsRepository.save(transaction);

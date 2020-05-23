@@ -5,7 +5,7 @@ export default class CreateCategoriesTable1587181372829
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'categories',
+        name: 'users',
         columns: [
           {
             name: 'id',
@@ -15,7 +15,16 @@ export default class CreateCategoriesTable1587181372829
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'title',
+            name: 'name',
+            type: 'varchar',
+          },
+          {
+            name: 'email',
+            type: 'varchar',
+            isUnique: true,
+          },
+          {
+            name: 'password',
             type: 'varchar',
           },
           {
